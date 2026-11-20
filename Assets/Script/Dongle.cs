@@ -11,6 +11,11 @@ public class Dongle : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    public int DongleLevel => dongleLevel;
+    public bool IsMerg { get => isMerg; set => isMerg = value; }
+    public bool IsDrop => isDrop;
+    public float DropTime => dropTime;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
