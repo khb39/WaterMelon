@@ -6,10 +6,10 @@ public class DongleManager : MonoBehaviour
 {
     public static DongleManager Instance { get; private set; }
 
-    [Header("레벨 순서대로 (0 → 10)")]
+    [Header("레벨 순서대로")]
     [SerializeField] private Dongle[] donglePrefabs;
 
-    [Header("새 동글 스폰")]
+    [Header("동글 스폰")]
     [SerializeField] private Transform dropPoint;   // 동글이 생성될 위치
     [SerializeField] private int maxSpawnLevel = 4; // 새 동글은 0~4 레벨만
 
