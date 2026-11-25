@@ -1,19 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DongleManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static DongleManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; }
 
     [Header("레벨 순서대로")]
     [SerializeField] private Dongle[] donglePrefabs;
 
     [Header("동글 스폰")]
-    [SerializeField] private Transform dropPoint;   // 동글이 생성될 위치
     [SerializeField] private int maxSpawnLevel = 4; // 새 동글은 0~4 레벨만
-
-    private Dongle currentDongle; // 지금 들고 있는 동글
 
     public int MaxLevel
     {
@@ -25,16 +20,12 @@ public class DongleManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        SpawnNewDongle();
-    }
-
-    public void SpawnNewDongle()
+    public Dongle SpawnNewDongle(Vector3 position)
     {
         int randomLevel = Random.Range(0, maxSpawnLevel + 1);
-        currentDongle = CreateDongle(randomLevel, dropPoint.position);
-        currentDongle.Hold();
+        Dongle newDongle = CreateDongle(randomLevel, position);
+        newDongle.Hold();
+        return newDongle;
     }
 
     public Dongle CreateMergedDongle(int level, Vector3 position)

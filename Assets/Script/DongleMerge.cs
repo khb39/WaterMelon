@@ -30,7 +30,7 @@ public class DongleMerge : MonoBehaviour
         if(!a.IsDrop || !b.IsDrop) return false; // 떨어뜨리기 전의 경우
         if(a.IsMerg || b.IsMerg) return false; // 이미 합쳐지는 중일 경우
         if(a.DongleLevel != b.DongleLevel) return false; // 레벨이 다른 경우
-        if(a.DongleLevel >= DongleManager.Instance.MaxLevel) return false; //최대 레벨 달성의 경우
+        if(a.DongleLevel >= GameManager.Instance.MaxLevel) return false; //최대 레벨 달성의 경우
         return true;
     }
 
@@ -45,7 +45,7 @@ public class DongleMerge : MonoBehaviour
         Destroy(dongleA.gameObject);
         Destroy(dongleB.gameObject);
 
-        Dongle merged = DongleManager.Instance.CreateMergedDongle(nextLevel, midPosition);
+        Dongle merged = GameManager.Instance.CreateMergedDongle(nextLevel, midPosition);
         merged.Drop();
 
     }
