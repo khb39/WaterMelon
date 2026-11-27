@@ -12,10 +12,7 @@ public class DeadLine : MonoBehaviour
     private bool isGameOver;
 
 
-    private void Start()
-    {
-        Debug.Log("DeadLine 스크립트 실행됨");
-    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.TryGetComponent(out Dongle dongle)) return; // 동글이 아니면 무시
@@ -23,7 +20,6 @@ public class DeadLine : MonoBehaviour
         if (!donglesOnLine.Contains(dongle))
         {
             donglesOnLine.Add(dongle);
-            Debug.Log("데드라인 enter");
         }
     }
 
@@ -32,7 +28,6 @@ public class DeadLine : MonoBehaviour
         if (!other.TryGetComponent(out Dongle dongle)) return;
 
         donglesOnLine.Remove(dongle);
-        Debug.Log("데드라인 exit");
     }
 
     private void Update()
@@ -50,7 +45,6 @@ public class DeadLine : MonoBehaviour
 
         if (overTimer >= limitTime)
         {
-            Debug.Log("데드라인 update");
             GameManager.Instance.GameOver();
         }
         
@@ -64,7 +58,6 @@ public class DeadLine : MonoBehaviour
             float timeSinceDrop = Time.time - dongle.DropTime;
             if (timeSinceDrop > graceTime)
             {
-                Debug.Log("데드라인 isDongleOver");
                 return true;
             }
         }
